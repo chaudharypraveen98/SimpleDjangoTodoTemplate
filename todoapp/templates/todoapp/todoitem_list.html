@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'todoapp/style.css' %}">
+</head>
+<body>
+    <h1 class="head">My Todo</h1>
+    <div class="todo-container">
+        {% for item in todoItems %}
+            <div class="todo-items">
+            <div class="todo-item-detail">
+                <h2 class="title">{{ item.title }}</h2>
+                <h4 class="description">{{ item.description }}</h4>
+            </div>
+            <div class="todo-del"><a href="{% url 'todo:todo-item-delete' item.pk %}">X</a></div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
